@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import AOS from "aos"; 
 import "aos/dist/aos.css"; 
 
@@ -49,6 +50,7 @@ function App() {
         <Route path="/tours" element={<Tours />} />
       </Routes>
       <Footer />
+      <Analytics />
     </BrowserRouter>
   );
 }
