@@ -87,7 +87,7 @@ const destinations = [
   },
   {
     name: "Bhutan",
-    img: "https://images.unsplash.com/photo-1548263514-a76643b8098e?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1570358826724-4f014e7a83d3?auto=format&fit=crop&w=800&q=80",
   },
 ];
 

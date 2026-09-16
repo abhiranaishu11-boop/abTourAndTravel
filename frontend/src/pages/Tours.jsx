@@ -34,7 +34,7 @@ const tourPackages = [
     duration: "8 Days / 7 Nights",
     groupSize: "4-10 people",
     tags: ["Tiger's Nest", "Dzongs", "Buddhist Festivals"],
-    image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1570358826724-4f014e7a83d3?auto=format&fit=crop&w=600&q=80",
     featured: false
   },
   {
