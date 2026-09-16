@@ -127,10 +127,6 @@ ${dark ? "dark-mobile" : ""}`}
           <Link to="/contact" className="booking-btn mobile-book">
             Book Your Trip
           </Link>
-
-          <button className="theme-btn mobile-theme" onClick={toggleTheme}>
-            Change Theme {dark ? "☀️" : "🌙"}
-          </button>
         </div>
       </div>
     </>
