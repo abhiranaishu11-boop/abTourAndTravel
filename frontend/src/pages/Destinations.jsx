@@ -100,7 +100,7 @@ const Destinations = () => {
       subtitle: "The Land of Happiness",
 
       image:
-        "https://images.unsplash.com/photo-1570358826724-4f014e7a83d3?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80",
 
       description:
         "Experience peaceful monasteries, snow covered mountains and traditional Bhutanese culture. Perfect destination for nature lovers.",
