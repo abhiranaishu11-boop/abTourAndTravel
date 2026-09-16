@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-gradient: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #60a5fa 100%);
+  --surface: #ffffff;
+  --bg-page: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --star: #f59e0b;
+  --radius-lg: 20px;
+  --radius-sm: 10px;
+  --shadow-card: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 20px 35px -5px rgba(37, 99, 235, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Hero Banner --- */
+.adv-hero {
+  background: var(--primary-gradient);
+  color: #ffffff;
+  padding: 90px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.adv-hero::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+}
+
+.adv-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 14px;
+}
+
+.adv-hero p {
+  font-size: 1.1rem;
+  color: #e0f2fe;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Layout Container --- */
+.adv-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-head h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.section-head p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+/* --- Tour Grid Cards --- */
+.adv-tour-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.adv-tour-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.adv-tour-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-hover);
+  border-color: #cbd5e1;
+}
+
+.card-visual-wrapper {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+}
+
+.card-visual-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.adv-tour-card:hover .card-visual-wrapper img {
+  transform: scale(1.08);
+}
+
+.badge-country-pill {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badge-featured-pill {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
+}
+
+.card-details-box {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-details-box h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+
+.rating-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--star);
+}
+
+.rating-line span {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.meta-parameters {
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-param-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.meta-param-item svg {
+  color: var(--primary);
+}
+
+.tour-tags-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 20px;
+}
+
+.tag-bubble {
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.card-action-footer {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quote-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.btn-quote {
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.btn-quote:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+/* --- Features / Inclusions Bar --- */
+.inclusions-wrapper {
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.inclusions-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.inclusion-tile {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  padding: 30px 20px;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.inclusion-tile:hover {
+  background: #ffffff;
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+}
+
+.inclusion-icon-badge {
+  width: 52px;
+  height: 52px;
+  background: #eff6ff;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.inclusion-tile h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.inclusion-tile p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* --- Wildlife Sanctuary Highlight Area --- */
+.highlight-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.highlight-box {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-card);
+}
+
+.highlight-box h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.highlight-box .desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 10px 0 16px;
+}
+
+.accent-bullet-list {
+  border-left: 3px solid #f59e0b;
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.accent-bullet-list strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.accent-bullet-list span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}

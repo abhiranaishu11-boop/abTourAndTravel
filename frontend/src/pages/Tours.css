@@ -1,0 +1,89 @@
+.tours-page {
+    color: #172033;
+}
+
+/* Hero Section */
+.tours-hero {
+    min-height: 480px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 20px 82px;
+    background:
+        linear-gradient(rgba(8, 19, 35, .35), rgba(8, 19, 35, .82)),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1920&q=85") center/cover no-repeat;
+}
+
+.tours-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    text-shadow: 0 4px 22px rgba(0, 0, 0, .4);
+}
+
+.tours-hero p {
+    max-width: 650px;
+    margin: 18px auto 0;
+    font-size: 1.1rem;
+}
+
+/* Tour Card Base */
+.tour-card {
+    border: 1px solid rgba(18, 100, 255, .08) !important;
+    transition: transform .35s ease, box-shadow .35s ease;
+    overflow: hidden; /* Bahar aane se rokne ke liye */
+}
+
+.tour-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(18, 100, 255, .15) !important;
+}
+
+/* Image Fit & Zoom (CRITICAL FIX) */
+.tour-card .position-relative {
+    height: 230px !important;
+    overflow: hidden; /* Zoom hone par image bahar na nikle */
+}
+
+.tour-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block;
+    transition: transform .6s ease;
+}
+
+.tour-card:hover img {
+    transform: scale(1.08);
+}
+
+/* Button Styling */
+.tour-card .btn {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.tour-card .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(13, 110, 253, .25);
+}
+
+/* Inclusions & Secondary Sections */
+.tours-page section.bg-white {
+    background: linear-gradient(180deg, #ffffff, #f7faff) !important;
+}
+
+.inclusion-box {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.inclusion-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .07);
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 768px) {
+    .tours-hero {
+        min-height: 400px;
+        padding-bottom: 50px;
+    }
+}
