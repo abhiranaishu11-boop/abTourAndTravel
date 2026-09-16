@@ -42,3 +42,183 @@ body {
   outline: none !important;
   box-shadow: none !important;
 }
+
+/* Shared layout safeguards for narrow screens. */
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+@media (max-width: 991px) {
+  .adv-container {
+    padding: 44px 18px;
+  }
+
+  .adv-tour-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 20px;
+  }
+
+  .destination-card,
+  .destination-card.reverse {
+    flex-direction: column;
+    margin-bottom: 36px;
+  }
+
+  .card-image img {
+    min-height: 300px;
+    height: 300px;
+  }
+
+  .card-content {
+    padding: 32px 24px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .footer-container,
+  .footer-inner {
+    gap: 30px;
+  }
+
+  .login-card {
+    width: min(100%, 420px);
+  }
+}
+
+@media (max-width: 767px) {
+  .adv-hero {
+    padding: 72px 18px;
+  }
+
+  .adv-hero h1 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .section-head {
+    margin-bottom: 30px;
+  }
+
+  .section-head h2 {
+    font-size: 1.65rem;
+  }
+
+  .features-grid,
+  .footer-container,
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .meta-info,
+  .card-action-footer,
+  .booking-footer {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .card-action-footer {
+    align-items: stretch;
+  }
+
+  .btn-quote {
+    width: 100%;
+  }
+
+  .admin-login-page {
+    padding: 24px 16px;
+  }
+
+  .login-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .admin-hero {
+    padding: 78px 16px 54px;
+  }
+
+  .admin-hero h1 {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: -28px;
+  }
+
+  .search-box {
+    padding: 12px 14px;
+  }
+
+  .search-box input {
+    min-width: 0;
+  }
+
+  .whatsapp-btn {
+    right: 16px;
+    bottom: 78px;
+    width: 52px;
+    height: 52px;
+    font-size: 25px;
+  }
+
+  .top-btn {
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .premium-hero {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero-buttons {
+    gap: 12px;
+  }
+
+  .premium-btn,
+  .glass-btn,
+  .cta-button {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .card-image img {
+    min-height: 240px;
+    height: 240px;
+  }
+
+  .card-content {
+    padding: 24px 18px;
+  }
+
+  .features-section,
+  .cta-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

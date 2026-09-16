@@ -535,6 +535,31 @@
 
 }
 
+@media (max-width: 991px) {
+  .premium-navbar .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .premium-navbar .mobile-toggle,
+  .premium-navbar.scrolled .mobile-toggle {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .mobile-menu {
+    width: min(86vw, 320px) !important;
+  }
+
+  .mobile-logo {
+    width: min(180px, 68vw);
+    height: auto;
+  }
+}
+
 
 
 
