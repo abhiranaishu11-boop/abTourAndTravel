@@ -103,6 +103,7 @@ function Contact() {
       console.error(error);
       setMessage(
         error.response?.data?.message ||
+          error.response?.data?.error ||
           "❌ Something went wrong. Please try again.",
       );
     } finally {
@@ -210,6 +211,7 @@ function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your Name"
+                        required
                       />
                     </Col>
 
@@ -223,6 +225,7 @@ function Contact() {
                         value={formData.contactNumber}
                         onChange={handleChange}
                         placeholder="Phone Number"
+                        required
                       />
                     </Col>
 
@@ -236,6 +239,7 @@ function Contact() {
                         value={formData.destination}
                         onChange={handleChange}
                         placeholder="Goa, Kerala..."
+                        required
                       />
                     </Col>
 
@@ -251,6 +255,7 @@ function Contact() {
                         value={formData.adults}
                         min="1"
                         onChange={handleChange}
+                        required
                       />
                     </Col>
 
@@ -297,6 +302,7 @@ function Contact() {
                         min="1"
                         value={formData.days}
                         onChange={handleDaysChange}
+                        required
                       />
                     </Col>
 
@@ -311,6 +317,7 @@ function Contact() {
                         value={formData.startDate}
                         min={new Date().toISOString().split("T")[0]}
                         onChange={handleStartDateChange}
+                        required
                       />
                     </Col>
 
@@ -322,6 +329,7 @@ function Contact() {
                         type="date"
                         value={formData.endDate}
                         readOnly
+                        required
                       />
                     </Col>
 
@@ -335,6 +343,7 @@ function Contact() {
                         name="hotelCategory"
                         value={formData.hotelCategory}
                         onChange={handleChange}
+                        required
                       >
                         <option value="">Select</option>
 
@@ -354,6 +363,7 @@ function Contact() {
                         name="mealPlan"
                         value={formData.mealPlan}
                         onChange={handleChange}
+                        required
                       >
                         <option value="">Select</option>
 
@@ -371,6 +381,7 @@ function Contact() {
                         name="roomType"
                         value={formData.roomType}
                         onChange={handleChange}
+                        required
                       >
                         <option value="">Select</option>
 
@@ -388,6 +399,7 @@ function Contact() {
                         name="vehicleType"
                         value={formData.vehicleType}
                         onChange={handleChange}
+                        required
                       >
                         <option value="">Select</option>
 
