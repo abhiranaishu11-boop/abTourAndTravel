@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_URL } from "../config/api";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -76,7 +77,7 @@ function Contact() {
       setLoading(true);
       setMessage("");
 
-      await axios.post("http://localhost:5000/api/bookings/contact", formData);
+      await axios.post(`${API_URL}/api/bookings/contact`, formData);
 
       setMessage("✅ Booking Submitted Successfully!");
 

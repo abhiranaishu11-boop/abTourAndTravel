@@ -3,6 +3,7 @@ import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { CONTACT_EMAIL } from "../config/contact";
+import { API_URL } from "../config/api";
 
 import {
   FaLock,
@@ -20,7 +21,6 @@ import {
 import "./Admin.css";
 
 function Admin() {
-  const API_URL = "http://localhost:5000";
   const [email] = useState(CONTACT_EMAIL);
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
