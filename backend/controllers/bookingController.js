@@ -4,7 +4,7 @@ const sendMail = require("../utils/mailSender");
 exports.createBooking = async (req, res) => {
 	try {
 		const booking = await Booking.create(req.body);
-		const emailSent = await sendMail(
+		sendMail(
 			process.env.EMAIL,
 			`New tour booking: ${booking.name}`,
 			`
@@ -20,12 +20,14 @@ exports.createBooking = async (req, res) => {
 					<p><strong>Guide:</strong> ${booking.guideDuration || "Not requested"} (${booking.guideLanguage})</p>
 				</div>
 			`,
-		);
+		).then((emailSent) => {
+			console.log(`Booking notification email sent: ${emailSent}`);
+		});
 
 		res.status(201).json({
 			success: true,
 			message: "Booking submitted successfully",
-			emailSent,
+			emailSent: "pending",
 			booking,
 		});
 	} catch (error) {
