@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Tilt from "react-parallax-tilt";
 import "./Home.css";
@@ -93,10 +93,34 @@ const destinations = [
 
 function Home() {
   const [current, setCurrent] = useState(0);
+  const touchStartX = useRef(null);
+
+  const showNextHero = () => {
+    setCurrent((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const showPreviousHero = () => {
+    setCurrent((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  };
+
+  const handleHeroTouchStart = (event) => {
+    touchStartX.current = event.changedTouches[0].clientX;
+  };
+
+  const handleHeroTouchEnd = (event) => {
+    if (touchStartX.current === null) return;
+
+    const distance = event.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(distance) > 45) {
+      distance < 0 ? showNextHero() : showPreviousHero();
+    }
+
+    touchStartX.current = null;
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroImages.length);
+      showNextHero();
     }, 5000);
 
     return () => clearInterval(timer);
@@ -111,6 +135,8 @@ function Home() {
         style={{
           backgroundImage: `url(${heroImages[current].image})`,
         }}
+        onTouchStart={handleHeroTouchStart}
+        onTouchEnd={handleHeroTouchEnd}
       >
         <div className="hero-dark"></div>
 
@@ -134,11 +160,13 @@ function Home() {
 
         <div className="slider-dots">
           {heroImages.map((item, index) => (
-            <span
+            <button
               key={index}
+              type="button"
+              aria-label={`Show slide ${index + 1}: ${item.title}`}
               className={current === index ? "active-dot" : ""}
               onClick={() => setCurrent(index)}
-            ></span>
+            ></button>
           ))}
         </div>
       </section>

@@ -28,6 +28,8 @@ animation:zoom 18s ease-in-out infinite alternate;
 
 transition:background-image 0.9s ease, transform 0.9s ease;
 
+touch-action: pan-y;
+
 }
 
 
@@ -309,13 +311,15 @@ z-index:3;
 
 
 
-.slider-dots span{
+.slider-dots button{
 
 height:13px;
 
 width:13px;
 
 background:white;
+
+border:0;
 
 border-radius:50%;
 
@@ -326,6 +330,11 @@ cursor:pointer;
 transition:.3s;
 
 
+}
+
+.slider-dots button.active-dot{
+  opacity:1;
+  transform:scale(1.25);
 }
 
 

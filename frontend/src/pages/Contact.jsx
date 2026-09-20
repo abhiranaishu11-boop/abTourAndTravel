@@ -29,6 +29,7 @@ function Contact() {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Generic input change
   const handleChange = (e) => {
@@ -80,6 +81,7 @@ function Contact() {
       await axios.post(`${API_URL}/api/bookings/contact`, formData);
 
       setMessage("✅ Booking Submitted Successfully!");
+      setShowSuccessModal(true);
 
       // Reset form
       setFormData({
@@ -369,6 +371,10 @@ function Contact() {
 
                         <option>Breakfast</option>
 
+                        <option>Lunch</option>
+
+                        <option>Breakfast + Lunch</option>
+
                         <option>Breakfast + Dinner</option>
                       </Form.Select>
                     </Col>
@@ -473,6 +479,39 @@ function Contact() {
           </div>
         </div>
       </section>
+
+      {showSuccessModal && (
+        <div className="booking-success-backdrop" role="presentation">
+          <div
+            className="booking-success-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="booking-success-title"
+          >
+            <button
+              type="button"
+              className="booking-success-close"
+              aria-label="Close booking confirmation"
+              onClick={() => setShowSuccessModal(false)}
+            >
+              &times;
+            </button>
+            <div className="booking-success-icon" aria-hidden="true">✓</div>
+            <h2 id="booking-success-title">Booking received!</h2>
+            <p>
+              Thank you for choosing AB Tour Travel. Our team will contact you
+              shortly with your personalized trip details.
+            </p>
+            <button
+              type="button"
+              className="booking-success-action"
+              onClick={() => setShowSuccessModal(false)}
+            >
+              Continue exploring
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* FAQ */}
 

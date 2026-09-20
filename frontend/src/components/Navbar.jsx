@@ -4,7 +4,7 @@ import "./Navbar.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import logo from "../assets/logo.png";
 
-function Navbar({ toggleTheme, dark }) {
+function Navbar({ dark }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
