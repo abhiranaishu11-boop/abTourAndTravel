@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import AOS from "aos"; 
 import "aos/dist/aos.css"; 
 
@@ -11,6 +11,20 @@ import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 import Destinations from "./pages/Destinations";
 import Tours from "./pages/Tours";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -28,17 +42,21 @@ function App() {
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
     }
-    
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     // AOS (Animate On Scroll) Setup
     AOS.init({
-      duration: 1000, 
-      once: true,     
-      offset: 50,    
+      duration: 450,
+      once: true,
+      offset: 20,
+      disable: reduceMotion,
     });
   }, [dark]);
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar toggleTheme={toggleTheme} dark={dark} />
       <Routes>
         <Route path="/" element={<Home />} />

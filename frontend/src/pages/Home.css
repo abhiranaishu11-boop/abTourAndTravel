@@ -24,9 +24,9 @@ overflow:hidden;
 
 padding:0 24px 72px;
 
-animation:zoom 12s infinite alternate;
+animation:zoom 18s ease-in-out infinite alternate;
 
-transition:background-image 1.2s ease, transform 1.2s ease;
+transition:background-image 0.9s ease, transform 0.9s ease;
 
 }
 
@@ -42,7 +42,7 @@ background-size:100%;
 
 100%{
 
-background-size:112%;
+background-size:106%;
 
 }
 
@@ -461,10 +461,10 @@ transition:.4s;
 .premium-card:hover{
 
 transform:
-translateY(-15px);
+translateY(-6px);
 
 box-shadow:
-0 25px 60px rgba(0,0,0,.15);
+0 16px 30px rgba(0,0,0,.12);
 
 }
 

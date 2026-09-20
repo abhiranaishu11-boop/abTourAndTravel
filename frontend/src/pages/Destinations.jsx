@@ -253,7 +253,7 @@ const Destinations = () => {
       >
 
         <div className="card-image">
-          <img src={dest.image} alt={`${dest.country} travel destination`} />
+          <img src={dest.image} alt={`${dest.country} travel destination`} loading="lazy" decoding="async" />
 
           <span className="image-badge">
             <FaMapMarkerAlt /> {dest.country}

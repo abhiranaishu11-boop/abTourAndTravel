@@ -10,7 +10,7 @@ import heroImageOne from "../assets/herosecimage.jpg";
 const heroImages = [
   {
     image:
-      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1920&q=90",
+      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80",
     title: "Explore The World With Us",
     desc: "Discover amazing destinations, luxury stays and unforgettable experiences.",
   },
@@ -165,7 +165,7 @@ function Home() {
           <div className="row g-4 service-grid">
             {services.map((service, index) => (
               <div className="col-lg-4 col-md-6" key={index}>
-                <Tilt scale={1.02}>
+                <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4} scale={1.01} transitionSpeed={200}>
                   <div className="premium-card">
                     <div className="service-circle">{service.icon}</div>
 
@@ -192,7 +192,7 @@ function Home() {
             {destinations.map((place, index) => (
               <div className="col-lg-4 col-md-6" key={index}>
                 <div className="destination-box">
-                  <img src={place.img} alt={place.name} />
+                  <img src={place.img} alt={place.name} loading="lazy" decoding="async" />
 
                   <div className="destination-info">
                     <h3>{place.name}</h3>
