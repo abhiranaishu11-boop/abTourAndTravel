@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { FaCrown, FaMountain, FaShieldAlt, FaUmbrellaBeach } from "react-icons/fa";
 import Tilt from "react-parallax-tilt";
 import "./Home.css";
 import { WHATSAPP_URL } from "../config/contact";
@@ -66,34 +67,32 @@ const services = [
 
 const destinations = [
   {
-    name: "Manali",
+    name: "India",
     destinationId: 1,
-    img: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Goa",
-    destinationId: 1,
-    img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Shimla",
-    destinationId: 1,
-    img: "https://images.unsplash.com/photo-1597075687490-8f673c6c17f6?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Taj Mahal",
-    destinationId: 1,
-    img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
+    description: "Experience the vibrant culture, ancient temples, and diverse landscapes",
+    icon: FaCrown,
+    img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&h=600&q=82",
   },
   {
     name: "Nepal",
     destinationId: 2,
-    img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
+    description: "Trek through the Himalayas and discover spiritual mountain monasteries",
+    icon: FaMountain,
+    img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&h=600&q=82",
   },
   {
     name: "Bhutan",
     destinationId: 3,
-    img: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=800&q=80",
+    description: "Explore the last Himalayan kingdom and its pristine Buddhist culture",
+    icon: FaShieldAlt,
+    img: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=900&h=600&q=82",
+  },
+  {
+    name: "Sri Lanka",
+    destinationId: 4,
+    description: "Relax on pristine beaches and explore ancient Buddhist heritage sites",
+    icon: FaUmbrellaBeach,
+    img: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&h=600&q=82",
   },
 ];
 
@@ -232,20 +231,28 @@ function Home() {
         <div className="container">
           <h2 className="main-heading">Popular Destinations</h2>
 
-          <div className="row g-4">
-            {destinations.map((place, index) => (
-              <div className="col-lg-4 col-md-6" key={index}>
-                <div className="destination-box">
-                  <img src={place.img} alt={place.name} loading="lazy" decoding="async" />
+          <div className="destination-card-grid">
+            {destinations.map((place) => {
+              const Icon = place.icon;
 
-                  <div className="destination-info">
-                    <h3>{place.name}</h3>
-
-                    <Link to={`/destinations#destination-${place.destinationId}`}>Explore →</Link>
+              return (
+                <Link
+                  className="home-destination-card"
+                  key={place.name}
+                  to={`/destinations#destination-${place.destinationId}`}
+                  aria-label={`Explore ${place.name} destinations`}
+                >
+                  <div className="home-destination-image">
+                    <img src={place.img} alt="" loading="lazy" decoding="async" />
+                    <div className="home-destination-overlay">
+                      <Icon aria-hidden="true" />
+                      <h3>{place.name}</h3>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                  <p>{place.description}</p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
