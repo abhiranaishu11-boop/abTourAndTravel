@@ -1,3 +1,4 @@
+/* Base Page Styling */
 .tours-page {
     color: #172033;
 }
@@ -6,7 +7,7 @@
     background-color: #1264ff !important;
 }
 
-/* Hero Section */
+/* 1. Hero Section */
 .tours-hero {
     min-height: 480px;
     display: flex;
@@ -30,12 +31,12 @@
     font-size: 1.1rem;
 }
 
-/* Tour Card Base */
+/* 2. Tour Card Styling */
 .tour-card {
     border: 1px solid rgba(18, 100, 255, .08) !important;
     border-radius: 14px !important;
     transition: transform .35s ease, box-shadow .35s ease;
-    overflow: hidden; /* Bahar aane se rokne ke liye */
+    overflow: hidden;
 }
 
 .tour-card:hover {
@@ -43,13 +44,15 @@
     box-shadow: 0 20px 45px rgba(18, 100, 255, .15) !important;
 }
 
-/* Image Fit & Zoom (CRITICAL FIX) */
-.tour-card .position-relative {
+/* Tour Card Image Fit & Hover Zoom */
+.tour-card .position-relative,
+.tour-card-image {
     height: 185px !important;
-    overflow: hidden; /* Zoom hone par image bahar na nikle */
+    overflow: hidden;
 }
 
-.tour-card img {
+.tour-card img,
+.tour-card-image img {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
@@ -57,8 +60,13 @@
     transition: transform .6s ease;
 }
 
-.tour-card:hover img {
+.tour-card:hover img,
+.tour-card:hover .tour-card-image img {
     transform: scale(1.08);
+}
+
+.tour-card .card-body {
+    min-height: 250px;
 }
 
 /* Button Styling */
@@ -71,8 +79,16 @@
     box-shadow: 0 8px 18px rgba(13, 110, 253, .25);
 }
 
-/* Inclusions & Secondary Sections */
-.tours-page section.bg-white {
+.tour-card .btn-primary {
+    background: #1264ff;
+    border-color: #1264ff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* 3. Inclusions Section */
+.tours-page section.bg-white,
+.inclusions-section {
     background: linear-gradient(180deg, #ffffff, #f7faff) !important;
 }
 
@@ -82,24 +98,116 @@
 
 .inclusion-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, .07);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .07) !important;
 }
 
-/* Responsive Breakpoint */
+/* 4. Wildlife Sanctuaries & National Parks Section */
+.wildlife-overview-section {
+    background-color: #f2fbf6;
+}
+
+.wildlife-card-img-wrap {
+    overflow: hidden;
+}
+
+.wildlife-card-img-wrap img {
+    transition: transform .5s ease;
+}
+
+.wildlife-card-img-wrap:hover img {
+    transform: scale(1.05);
+}
+
+.feature-item-border {
+    border-left: 3px solid #ff9800;
+}
+
+.safari-feature-banner {
+    background-color: #eef6ff;
+    border: 1px solid rgba(18, 100, 255, 0.1);
+}
+
+.bullet-point {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #198754;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Common Pill / Tag Badges */
+.tag-badge {
+    background-color: #f1f3f7;
+    color: #495057;
+    font-weight: 500;
+    font-size: 0.78rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #e2e5eb;
+    display: inline-block;
+}
+
+/* 5. Destination & Category Cards Hover */
+.info-hover-card {
+    transition: transform .3s ease, box-shadow .3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.info-hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 6. Region Heading Colors & Icons */
+.region-title-blue {
+    color: #0b5ed7;
+}
+
+.region-title-orange {
+    color: #e65100;
+}
+
+.region-title-green {
+    color: #198754;
+}
+
+.region-title-purple {
+    color: #7b1fa2;
+}
+
+.region-title-brown {
+    color: #c2410c;
+}
+
+.region-icon {
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* 7. Custom Tour CTA Banner */
+.custom-tour-cta {
+    background: #1455f6;
+    background: linear-gradient(135deg, #1254ff 0%, #0d44db 100%);
+}
+
+.custom-tour-cta .btn-light {
+    color: #1254ff !important;
+    font-size: 0.95rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.custom-tour-cta .btn-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* 8. Responsive Breakpoint */
 @media (max-width: 768px) {
     .tours-hero {
         min-height: 400px;
         padding-bottom: 50px;
     }
-}
-
-.tour-card .card-body {
-    min-height: 250px;
-}
-
-.tour-card .btn-primary {
-    background: #1264ff;
-    border-color: #1264ff;
-    text-decoration: none;
-    white-space: nowrap;
 }
