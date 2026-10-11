@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import logo from "../assets/logo.png";
 
 function Navbar({ dark }) {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -21,13 +22,27 @@ function Navbar({ dark }) {
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
 
-  const closeMenu = () => {
+  const navigateFromMobileMenu = (event, path) => {
+    event.preventDefault();
     const menu = document.getElementById("mobileMenu");
+    const Offcanvas = window.bootstrap?.Offcanvas;
+    const bs = menu && Offcanvas ? Offcanvas.getOrCreateInstance(menu) : null;
 
-    const bs = window.bootstrap?.Offcanvas.getInstance(menu);
-
-    if (bs) {
+    if (bs && menu.classList.contains("show")) {
+      menu.addEventListener("hidden.bs.offcanvas", () => navigate(path), { once: true });
       bs.hide();
+      return;
+    }
+
+    navigate(path);
+  };
+
+  const openMobileMenu = () => {
+    const menu = document.getElementById("mobileMenu");
+    const Offcanvas = window.bootstrap?.Offcanvas;
+
+    if (menu && Offcanvas) {
+      Offcanvas.getOrCreateInstance(menu).show();
     }
   };
 
@@ -83,8 +98,10 @@ ${dark ? "dark-mode" : ""}`}
 
           <button
             className="mobile-toggle"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#mobileMenu"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-controls="mobileMenu"
+            onClick={openMobileMenu}
           >
             ☰
           </button>
@@ -116,7 +133,7 @@ ${dark ? "dark-mobile" : ""}`}
             <NavLink
               key={name}
               to={path}
-              onClick={closeMenu}
+              onClick={(event) => navigateFromMobileMenu(event, path)}
               className="mobile-link"
               end={name === "Home"}
             >

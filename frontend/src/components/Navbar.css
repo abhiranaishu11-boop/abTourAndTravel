@@ -539,6 +539,9 @@
   .premium-navbar,
   .premium-navbar.scrolled {
     height: 64px;
+    top: 0;
+    transform: translateY(0);
+    animation: none;
     background: rgba(15, 23, 42, 0.86);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -558,7 +561,8 @@
   }
 
   .premium-navbar .mobile-toggle,
-  .premium-navbar.scrolled .mobile-toggle {
+  .premium-navbar.scrolled .mobile-toggle,
+  .premium-navbar:not(.scrolled) .mobile-toggle {
     display: block;
     padding: 4px 6px;
     font-size: 24px;

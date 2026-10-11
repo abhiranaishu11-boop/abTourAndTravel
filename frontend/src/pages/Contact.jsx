@@ -26,6 +26,7 @@ function Contact() {
     guideDuration: "",
     guideLanguage: "English",
   });
+  const [customGuideLanguage, setCustomGuideLanguage] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -101,6 +102,7 @@ function Contact() {
         guideDuration: "",
         guideLanguage: "English",
       });
+      setCustomGuideLanguage(false);
     } catch (error) {
       console.error(error);
       setMessage(
@@ -437,9 +439,15 @@ function Contact() {
 
                       <Form.Select
                         className="premium-input"
-                        name="guideLanguage"
-                        value={formData.guideLanguage}
-                        onChange={handleChange}
+                        value={customGuideLanguage ? "Other" : formData.guideLanguage}
+                        onChange={(event) => {
+                          const language = event.target.value;
+                          setCustomGuideLanguage(language === "Other");
+                          setFormData((current) => ({
+                            ...current,
+                            guideLanguage: language === "Other" ? "" : language,
+                          }));
+                        }}
                       >
                         <option>English</option>
 
@@ -447,6 +455,19 @@ function Contact() {
 
                         <option>Other</option>
                       </Form.Select>
+
+                      {customGuideLanguage && (
+                        <Form.Control
+                          className="premium-input mt-2"
+                          type="text"
+                          name="guideLanguage"
+                          value={formData.guideLanguage}
+                          onChange={handleChange}
+                          placeholder="Enter preferred guide language"
+                          aria-label="Enter preferred guide language"
+                          required
+                        />
+                      )}
                     </Col>
 
                     {/* BUTTON */}
