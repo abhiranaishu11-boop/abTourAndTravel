@@ -27,6 +27,7 @@ function Admin() {
   const [loginMessage, setLoginMessage] = useState("");
 
   const [isAuth, setIsAuth] = useState(false);
+  const [adminToken, setAdminToken] = useState("");
 
   const [bookings, setBookings] = useState([]);
 
@@ -37,17 +38,18 @@ function Admin() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
+    localStorage.removeItem("adminToken");
     AOS.init({
       duration: 900,
       once: true,
     });
   }, []);
 
-  const authConfig = () => ({
+  const authConfig = useCallback((token = adminToken) => ({
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+      Authorization: `Bearer ${token}`,
     },
-  });
+  }), [adminToken]);
 
   const sendLoginOtp = async () => {
     try {
@@ -71,9 +73,10 @@ function Admin() {
     try {
       setLoading(true);
       const loginRes = await axios.post(`${API_URL}/api/auth/verify-otp`, { email, otp });
-      localStorage.setItem("adminToken", loginRes.data.token);
+      const verifiedToken = loginRes.data.token;
+      setAdminToken(verifiedToken);
 
-      const res = await axios.get(`${API_URL}/api/admin/bookings`, authConfig());
+      const res = await axios.get(`${API_URL}/api/admin/bookings`, authConfig(verifiedToken));
       setBookings(res.data.bookings || []);
       setFilteredBookings(res.data.bookings || []);
       setIsAuth(true);
@@ -101,18 +104,13 @@ function Admin() {
       setFilteredBookings(res.data.bookings || []);
     } catch (error) {
       if (error.response?.status === 401) {
-        localStorage.removeItem("adminToken");
+        setAdminToken("");
         setIsAuth(false);
+        setOtpSent(false);
+        setLoginMessage("Session expired. Request a new OTP to continue.");
       }
     }
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("adminToken")) {
-      refreshBookings();
-      setIsAuth(true);
-    }
-  }, [refreshBookings]);
+  }, [authConfig]);
 
   const deleteBooking = async (id) => {
     if (!window.confirm("Delete this booking?")) return;

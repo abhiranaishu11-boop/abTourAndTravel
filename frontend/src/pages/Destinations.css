@@ -95,6 +95,7 @@ DESTINATION CARD
   margin-bottom:70px;
   box-shadow:0 15px 45px rgba(0,0,0,.08);
   transition:.4s;
+  scroll-margin-top:96px;
 }
 
 .destination-card:hover{

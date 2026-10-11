@@ -67,26 +67,32 @@ const services = [
 const destinations = [
   {
     name: "Manali",
+    destinationId: 1,
     img: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Goa",
+    destinationId: 1,
     img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Shimla",
+    destinationId: 1,
     img: "https://images.unsplash.com/photo-1597075687490-8f673c6c17f6?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Taj Mahal",
+    destinationId: 1,
     img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Nepal",
+    destinationId: 2,
     img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Bhutan",
+    destinationId: 3,
     img: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=800&q=80",
   },
 ];
@@ -154,11 +160,15 @@ function Home() {
 
             <div className="hero-buttons">
               <Link to="/tours" className="btn premium-btn">
-                Explore Tours
+                <i className="bi bi-compass-fill" aria-hidden="true"></i>
+                <span>Explore Tours</span>
+                <i className="bi bi-arrow-up-right" aria-hidden="true"></i>
               </Link>
 
               <Link to="/contact" className="btn glass-btn">
-                Contact Us
+                <i className="bi bi-chat-dots-fill" aria-hidden="true"></i>
+                <span>Contact Us</span>
+                <i className="bi bi-arrow-right" aria-hidden="true"></i>
               </Link>
             </div>
           </div>
@@ -231,7 +241,7 @@ function Home() {
                   <div className="destination-info">
                     <h3>{place.name}</h3>
 
-                    <Link to="/destinations">Explore →</Link>
+                    <Link to={`/destinations#destination-${place.destinationId}`}>Explore →</Link>
                   </div>
                 </div>
               </div>
