@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import "./Tours.css";
 
 const tourPackages = [
   {
@@ -72,6 +74,18 @@ const tourPackages = [
     tags: ["Houseboat Stay", "Ayurvedic Spa", "Tea Plantations"],
     image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80",
     featured: false
+  },
+  {
+    id: 7,
+    title: "Wildlife Safari Adventure",
+    country: "India",
+    rating: "★ 4.9",
+    reviews: 132,
+    duration: "6 Days / 5 Nights",
+    groupSize: "4-12 people",
+    tags: ["Tiger Sightings", "Jungle Safari", "Bird Watching"],
+    image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=900&h=520&q=80",
+    featured: true
   }
 ];
 
@@ -123,7 +137,7 @@ const moreSanctuaries = [
 
 export default function TourPage() {
   return (
-    <div className="bg-light">
+    <div className="tours-page bg-light">
       {/* 1. HERO BANNER */}
       <header className="bg-primary text-white text-center py-5">
         <div className="container py-4">
@@ -139,12 +153,14 @@ export default function TourPage() {
         <div className="row g-4">
           {tourPackages.map((tour) => (
             <div key={tour.id} className="col-12 col-md-6 col-lg-4">
-              <div className="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <div className="card tour-card h-100 shadow-sm border-0 overflow-hidden">
                 <div className="position-relative" style={{ height: "220px" }}>
                   <img
                     src={tour.image}
                     alt={tour.title}
                     className="w-100 h-100 object-fit-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <span className="position-absolute top-0 start-0 m-3 badge bg-dark bg-opacity-75 rounded-pill px-3 py-2">
                     {tour.country}
@@ -179,7 +195,7 @@ export default function TourPage() {
 
                   <div className="d-flex justify-content-between align-items-center pt-3 border-top">
                     <span className="text-muted small">Pricing available on request</span>
-                    <button className="btn btn-primary btn-sm rounded-3 px-3">Get Quote</button>
+                    <Link to="/contact" className="btn btn-primary btn-sm rounded-3 px-3">Get Quote</Link>
                   </div>
                 </div>
               </div>

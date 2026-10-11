@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./Destinations.css";
 import { Link } from "react-router-dom";
 import {
   FaMapMarkerAlt,
   FaClock,
-  FaUserFriends,
   FaArrowRight,
   FaMountain,
   FaUmbrellaBeach,
@@ -29,11 +28,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from "../config/contact";
 
-import { useEffect } from "react";
 
 const Destinations = () => {
-  const [expandedDestination, setExpandedDestination] = useState(null);
-
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -51,19 +47,18 @@ const Destinations = () => {
         "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80",
 
       description:
-        "Explore the incredible diversity of India with majestic Himalayas, royal Rajasthan, tropical Kerala, beaches of Goa and breathtaking valleys. Perfect for families, honeymooners and adventure lovers.",
+        "India is a diverse country and has everything to it including snow-white mountains to golden deserts and beautiful beaches. Our personalized tours are available in all the major attractions places like Himachal Pradesh, Uttarakhand, Rajasthan, Goa and Kerala. Go sightseeing in hill stations, adventure games, heritage sites, or have fun in nature. You might be planning a family holiday, honeymoon or you may be on your own, we will design you a personalized package to suit you.",
 
       highlights: [
-        "Himachal Pradesh",
-        "Rajasthan",
-        "Kerala",
-        "Goa",
-        "Kashmir",
-        "Golden Triangle",
+        "Himachal Pradesh & Uttarakhand",
+        "Rajasthan Heritage Sites",
+        "Kerala Nature & Beaches",
+        "Goa Beaches",
+        "Hill Stations & Adventure",
       ],
 
-      duration: "7 - 21 Days",
-      bestTime: "Oct - Mar",
+      duration: "7-21 days",
+      bestTime: "October - March",
       reverse: false,
     },
 
@@ -249,6 +244,7 @@ const Destinations = () => {
       <div
         className={`destination-card ${dest.reverse ? "reverse" : ""}`}
         key={dest.id}
+        id={`destination-${dest.id}`}
         data-aos={dest.reverse ? "fade-left" : "fade-right"}
       >
 
@@ -261,8 +257,6 @@ const Destinations = () => {
         </div>
 
         <div className="card-content">
-          <span className="destination-number">0{dest.id}</span>
-
           <h2>{dest.country}</h2>
 
           <a className="subtitle-link" href={`#destination-${dest.id}`}>
@@ -277,31 +271,12 @@ const Destinations = () => {
             </span>
 
             <span>
-              <FaUserFriends /> For every traveller
+              <FaClock /> Best: {dest.bestTime}
             </span>
           </div>
 
-          <button
-            type="button"
-            className="highlight-toggle"
-            onClick={() =>
-              setExpandedDestination(
-                expandedDestination === dest.id ? null : dest.id,
-              )
-            }
-            aria-expanded={expandedDestination === dest.id}
-          >
-            {expandedDestination === dest.id
-              ? "Hide highlights"
-              : "View highlights"}
-            <FaArrowRight />
-          </button>
-
-          <div
-            className={`destination-details ${
-              expandedDestination === dest.id ? "is-open" : ""
-            }`}
-          >
+          <div className="destination-details">
+            <h4>Key Highlights:</h4>
             <ul className="highlights-grid">
               {dest.highlights.map((highlight) => (
                 <li key={highlight}>
@@ -310,10 +285,8 @@ const Destinations = () => {
               ))}
             </ul>
 
-            <p className="best-time">Best time: {dest.bestTime}</p>
-
             <Link to="/contact" className="btn-primary">
-              Plan this trip <FaArrowRight />
+              {dest.country === "India" ? "View Tours to India" : "Plan this trip"} <FaArrowRight />
             </Link>
           </div>
 
@@ -374,22 +347,16 @@ const Destinations = () => {
         data-aos="zoom-in"
       >
         <div className="container">
-
-          <h2>
-            Ready To Explore South Asia?
-          </h2>
-
+          <h2>Book Your International and Domestic Travel</h2>
           <p>
-            Whether you're planning a honeymoon,
-            family vacation, solo adventure or
-            corporate trip, we'll create the
-            perfect itinerary for you.
+            AB Tour Travel enables tourists to visit some of the best
+            destinations such as India, Nepal, Bhutan, and Sri Lanka and travel
+            with full confidence. Whether you want to have adventure, relax, or
+            explore the culture, we have a travel solution that will suit you.
           </p>
-
-          <button className="btn-primary">
+          <Link to="/contact" className="btn-primary">
             Reserve Your Trip Today
-          </button>
-
+          </Link>
         </div>
       </section>
 

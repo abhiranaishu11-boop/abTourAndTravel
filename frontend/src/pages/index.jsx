@@ -5,7 +5,7 @@ import "./Home.css";
 import { WHATSAPP_URL } from "../config/contact";
 import adventureImage from "../assets/ADVENTURE IMAGE.avif";
 import heroSectionImage from "../assets/HEROSEC3.avif";
-import heroImageOne from "../assets/herosecimage.jpg";
+import heroImageOne from "../assets/herosecimage-optimized.jpg";
 
 const heroImages = [
   {
@@ -132,12 +132,18 @@ function Home() {
 
       <section
         className="premium-hero"
-        style={{
-          backgroundImage: `url(${heroImages[current].image})`,
-        }}
         onTouchStart={handleHeroTouchStart}
         onTouchEnd={handleHeroTouchEnd}
       >
+        <img
+          className="hero-background-image"
+          src={heroImages[current].image}
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
         <div className="hero-dark"></div>
 
         <div className="hero-content" key={heroImages[current].title}>
@@ -300,18 +306,20 @@ function Home() {
       {/* ================= CTA ================= */}
 
       <section className="premium-cta">
-        <div className="cta-overlay"></div>
-
-        <div className="container">
-          <div className="cta-content">
-            <h2>Ready For Your Next Adventure?</h2>
-
-            <p>Plan your dream vacation with AB Tour Travel today.</p>
-
-            <Link to="/contact" className="cta-button">
-              Book Your Trip Now
-            </Link>
-          </div>
+        <div className="container cta-content">
+          <h2>Reserve a Trip</h2>
+          <p>
+            In the case of AB Tour Travel, it is easy to organize your trip in
+            an easy way. We offer everything under one roof; be it transport and
+            hotels, flights and tour packages.
+          </p>
+          <p>
+            Get in touch with us and book your next destination and have a
+            hassle-free, convenient, and enjoyable traveling experience.
+          </p>
+          <Link to="/contact" className="cta-button">
+            Book Your Next Destination
+          </Link>
         </div>
       </section>
 

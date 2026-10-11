@@ -680,21 +680,14 @@ color:white;
 }
 
 .destination-details{
-  display:grid;
-  grid-template-rows:0fr;
-  opacity:0;
-  transition:grid-template-rows .45s ease, opacity .3s ease, margin-top .45s ease;
-}
-
-.destination-details.is-open{
-  grid-template-rows:1fr;
+  display:block;
   opacity:1;
   margin-top:24px;
 }
 
 .destination-details > *{
-  min-height:0;
-  overflow:hidden;
+  min-height:auto;
+  overflow:visible;
 }
 
 .best-time{

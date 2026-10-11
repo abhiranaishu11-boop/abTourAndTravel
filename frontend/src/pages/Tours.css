@@ -2,6 +2,10 @@
     color: #172033;
 }
 
+.tours-page > header {
+    background-color: #1264ff !important;
+}
+
 /* Hero Section */
 .tours-hero {
     min-height: 480px;
@@ -29,6 +33,7 @@
 /* Tour Card Base */
 .tour-card {
     border: 1px solid rgba(18, 100, 255, .08) !important;
+    border-radius: 14px !important;
     transition: transform .35s ease, box-shadow .35s ease;
     overflow: hidden; /* Bahar aane se rokne ke liye */
 }
@@ -40,7 +45,7 @@
 
 /* Image Fit & Zoom (CRITICAL FIX) */
 .tour-card .position-relative {
-    height: 230px !important;
+    height: 185px !important;
     overflow: hidden; /* Zoom hone par image bahar na nikle */
 }
 
@@ -86,4 +91,15 @@
         min-height: 400px;
         padding-bottom: 50px;
     }
+}
+
+.tour-card .card-body {
+    min-height: 250px;
+}
+
+.tour-card .btn-primary {
+    background: #1264ff;
+    border-color: #1264ff;
+    text-decoration: none;
+    white-space: nowrap;
 }
