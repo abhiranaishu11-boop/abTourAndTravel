@@ -158,13 +158,13 @@ function Home() {
             <p data-aos="fade-up">{heroImages[current].desc}</p>
 
             <div className="hero-buttons">
-              <Link to="/tours" className="btn premium-btn">
+              <Link to="/tours" className="premium-btn">
                 <i className="bi bi-compass-fill" aria-hidden="true"></i>
                 <span>Explore Tours</span>
                 <i className="bi bi-arrow-up-right" aria-hidden="true"></i>
               </Link>
 
-              <Link to="/contact" className="btn glass-btn">
+              <Link to="/contact" className="glass-btn">
                 <i className="bi bi-chat-dots-fill" aria-hidden="true"></i>
                 <span>Contact Us</span>
                 <i className="bi bi-arrow-right" aria-hidden="true"></i>
