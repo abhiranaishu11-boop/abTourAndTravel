@@ -15,6 +15,7 @@ import {
 
 import "./About.css";
 import {
+  CONTACT_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
   WHATSAPP_URL,
@@ -362,7 +363,7 @@ function About() {
             <div className="col-md-4">
               <h5>Contact</h5>
 
-              <p>📍 India</p>
+              <p>📍 {CONTACT_ADDRESS}</p>
 
               <p>📞 {CONTACT_PHONE_DISPLAY}</p>
 

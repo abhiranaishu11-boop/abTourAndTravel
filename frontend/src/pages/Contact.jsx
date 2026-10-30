@@ -5,7 +5,11 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Contact.css";
-import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from "../config/contact";
+import {
+  CONTACT_ADDRESS,
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+} from "../config/contact";
 
 function Contact() {
   const [openFaq, setOpenFaq] = useState(null);
@@ -177,7 +181,9 @@ function Contact() {
                 <div className="support-box">
                   <h5>Need Help?</h5>
 
-                  <p>📞 {CONTACT_PHONE_DISPLAY}</p>
+                  <p>� {CONTACT_ADDRESS}</p>
+
+                  <p>�📞 {CONTACT_PHONE_DISPLAY}</p>
 
                   <p>✉ {CONTACT_EMAIL}</p>
                 </div>
@@ -617,7 +623,7 @@ function Contact() {
 
               <p>
                 <i className="bi bi-geo-alt-fill me-2"></i>
-                New Delhi, India
+                {CONTACT_ADDRESS}
               </p>
 
               <p>

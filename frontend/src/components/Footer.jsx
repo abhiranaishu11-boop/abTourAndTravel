@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from "../config/contact";
+import {
+  CONTACT_ADDRESS,
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+} from "../config/contact";
 import "./Footer.css";
 
 function Footer() {
@@ -29,6 +33,7 @@ function Footer() {
 					<h3>Support</h3>
 					<Link to="/contact">Plan a Trip</Link>
 					<Link to="/contact">Contact Us</Link>
+					<span>{CONTACT_ADDRESS}</span>
 					<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
 					<a href={`tel:${CONTACT_PHONE_DISPLAY}`}>{CONTACT_PHONE_DISPLAY}</a>
 				</div>
