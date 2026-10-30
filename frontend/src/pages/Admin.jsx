@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { CONTACT_EMAIL } from "../config/contact";
+import { ADMIN_EMAIL } from "../config/contact";
 import { API_URL } from "../config/api";
 
 import {
@@ -21,7 +21,7 @@ import {
 import "./Admin.css";
 
 function Admin() {
-  const [email] = useState(CONTACT_EMAIL);
+  const [email] = useState(ADMIN_EMAIL);
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [loginMessage, setLoginMessage] = useState("");
